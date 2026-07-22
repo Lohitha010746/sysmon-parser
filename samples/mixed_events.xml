@@ -1,0 +1,145 @@
+<Events>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-21T17:31:02.114900Z" />
+      <EventRecordID>202301</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="3128" ThreadID="4820" />
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION-07.corp.example.com</Computer>
+      <Security UserID="S-1-5-18" />
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-21 17:31:02.111</Data>
+      <Data Name="ProcessGuid">{a1b2c3d4-4c16-64bf-6a00-000000005e00}</Data>
+      <Data Name="ProcessId">6120</Data>
+      <Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1682 (WinBuild.160101.0800)</Data>
+      <Data Name="Description">Windows PowerShell</Data>
+      <Data Name="Product">Microsoft&#xAE; Windows&#xAE; Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">PowerShell.EXE</Data>
+      <Data Name="CommandLine">powershell.exe -ExecutionPolicy Bypass -File C:\Users\jsmith\AppData\Roaming\updater.ps1</Data>
+      <Data Name="CurrentDirectory">C:\Users\jsmith\</Data>
+      <Data Name="User">CORP\jsmith</Data>
+      <Data Name="LogonGuid">{a1b2c3d4-1e90-64bf-4b2a-020000000000}</Data>
+      <Data Name="LogonId">0x22a4b</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">High</Data>
+      <Data Name="Hashes">SHA256=4A3B2C1D0E9F8A7B6C5D4E3F2A1B0C9D8E7F6A5B4C3D2E1F0A9B8C7D6E5F4A3B,MD5=B4A5968778695A4B3C2D1E0FF0E1D2C3</Data>
+      <Data Name="ParentProcessGuid">{a1b2c3d4-3a90-64bf-4800-000000005e00}</Data>
+      <Data Name="ParentProcessId">7712</Data>
+      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="ParentUser">CORP\jsmith</Data>
+    </EventData>
+  </Event>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+      <EventID>3</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>3</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-21T17:31:05.882471Z" />
+      <EventRecordID>202318</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="3128" ThreadID="4820" />
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION-07.corp.example.com</Computer>
+      <Security UserID="S-1-5-18" />
+    </System>
+    <EventData>
+      <Data Name="RuleName">technique_id=T1071,technique_name=Application Layer Protocol</Data>
+      <Data Name="UtcTime">2026-07-21 17:31:05.879</Data>
+      <Data Name="ProcessGuid">{a1b2c3d4-4c16-64bf-6a00-000000005e00}</Data>
+      <Data Name="ProcessId">6120</Data>
+      <Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+      <Data Name="User">CORP\jsmith</Data>
+      <Data Name="Protocol">tcp</Data>
+      <Data Name="Initiated">true</Data>
+      <Data Name="SourceIsIpv6">false</Data>
+      <Data Name="SourceIp">10.42.7.31</Data>
+      <Data Name="SourceHostname">WORKSTATION-07.corp.example.com</Data>
+      <Data Name="SourcePort">51188</Data>
+      <Data Name="SourcePortName">-</Data>
+      <Data Name="DestinationIsIpv6">false</Data>
+      <Data Name="DestinationIp">203.0.113.44</Data>
+      <Data Name="DestinationHostname">-</Data>
+      <Data Name="DestinationPort">8443</Data>
+      <Data Name="DestinationPortName">-</Data>
+    </EventData>
+  </Event>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+      <EventID>10</EventID>
+      <Version>3</Version>
+      <Level>4</Level>
+      <Task>10</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-21T17:31:44.309204Z" />
+      <EventRecordID>202355</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="3128" ThreadID="4820" />
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION-07.corp.example.com</Computer>
+      <Security UserID="S-1-5-18" />
+    </System>
+    <EventData>
+      <Data Name="RuleName">technique_id=T1003.001,technique_name=LSASS Memory</Data>
+      <Data Name="UtcTime">2026-07-21 17:31:44.306</Data>
+      <Data Name="SourceProcessGUID">{a1b2c3d4-4c16-64bf-6a00-000000005e00}</Data>
+      <Data Name="SourceProcessId">6120</Data>
+      <Data Name="SourceThreadId">4931</Data>
+      <Data Name="SourceImage">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+      <Data Name="TargetProcessGUID">{a1b2c3d4-1e88-64bf-0c00-000000005e00}</Data>
+      <Data Name="TargetProcessId">624</Data>
+      <Data Name="TargetImage">C:\Windows\System32\lsass.exe</Data>
+      <Data Name="GrantedAccess">0x1410</Data>
+      <Data Name="CallTrace">C:\Windows\SYSTEM32\ntdll.dll+9d234|C:\Windows\System32\KERNELBASE.dll+2a1cd|UNKNOWN(0000018f2b3c0000)</Data>
+      <Data Name="SourceUser">CORP\jsmith</Data>
+      <Data Name="TargetUser">NT AUTHORITY\SYSTEM</Data>
+    </EventData>
+  </Event>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+      <EventID>22</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>22</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-21T17:32:10.667013Z" />
+      <EventRecordID>202390</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="3128" ThreadID="4820" />
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION-07.corp.example.com</Computer>
+      <Security UserID="S-1-5-18" />
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-21 17:32:10.664</Data>
+      <Data Name="ProcessGuid">{a1b2c3d4-4c16-64bf-6a00-000000005e00}</Data>
+      <Data Name="ProcessId">6120</Data>
+      <Data Name="QueryName">exfil.malicious-example.net</Data>
+      <Data Name="QueryStatus">0</Data>
+      <Data Name="QueryResults">::ffff:203.0.113.44;</Data>
+      <Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+      <Data Name="User">CORP\jsmith</Data>
+    </EventData>
+  </Event>
+</Events>

@@ -1,0 +1,8 @@
+# Sysmon Parser has no third-party dependencies — it uses only the Python
+# standard library (argparse, json, xml.etree.ElementTree, sys).
+#
+# Requires Python 3.7+.
+#
+# This file is intentionally empty of packages. It exists so that
+# `pip install -r requirements.txt` succeeds cleanly and to document that the
+# tool is dependency-free.

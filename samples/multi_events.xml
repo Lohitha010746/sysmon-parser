@@ -1,0 +1,131 @@
+<Events>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-21T15:22:04.118273Z" />
+      <EventRecordID>190112</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="3128" ThreadID="4820" />
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION-07.corp.example.com</Computer>
+      <Security UserID="S-1-5-18" />
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-21 15:22:04.115</Data>
+      <Data Name="ProcessGuid">{a1b2c3d4-3aa4-64bf-4c00-000000005e00}</Data>
+      <Data Name="ProcessId">4488</Data>
+      <Data Name="Image">C:\Windows\System32\net.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1 (WinBuild.160101.0800)</Data>
+      <Data Name="Description">Net Command</Data>
+      <Data Name="Product">Microsoft&#xAE; Windows&#xAE; Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">net.exe</Data>
+      <Data Name="CommandLine">net group "Domain Admins" /domain</Data>
+      <Data Name="CurrentDirectory">C:\Users\jsmith\</Data>
+      <Data Name="User">CORP\jsmith</Data>
+      <Data Name="LogonGuid">{a1b2c3d4-1e90-64bf-4b2a-020000000000}</Data>
+      <Data Name="LogonId">0x22a4b</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">SHA256=1D0A5F3B7C9E2D4A6B8C0E1F2A3B4C5D6E7F8091A2B3C4D5E6F708192A3B4C5D,MD5=F0E1D2C3B4A5968778695A4B3C2D1E0F</Data>
+      <Data Name="ParentProcessGuid">{a1b2c3d4-3a90-64bf-4800-000000005e00}</Data>
+      <Data Name="ParentProcessId">7712</Data>
+      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="ParentUser">CORP\jsmith</Data>
+    </EventData>
+  </Event>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-21T15:22:31.640901Z" />
+      <EventRecordID>190118</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="3128" ThreadID="4820" />
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION-07.corp.example.com</Computer>
+      <Security UserID="S-1-5-18" />
+    </System>
+    <EventData>
+      <Data Name="RuleName">-</Data>
+      <Data Name="UtcTime">2026-07-21 15:22:31.637</Data>
+      <Data Name="ProcessGuid">{a1b2c3d4-3ac0-64bf-5000-000000005e00}</Data>
+      <Data Name="ProcessId">2260</Data>
+      <Data Name="Image">C:\Windows\System32\reg.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1 (WinBuild.160101.0800)</Data>
+      <Data Name="Description">Registry Console Tool</Data>
+      <Data Name="Product">Microsoft&#xAE; Windows&#xAE; Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">reg.exe</Data>
+      <Data Name="CommandLine">reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v Updater /t REG_SZ /d "C:\Users\jsmith\AppData\Roaming\updater.exe" /f</Data>
+      <Data Name="CurrentDirectory">C:\Users\jsmith\</Data>
+      <Data Name="User">CORP\jsmith</Data>
+      <Data Name="LogonGuid">{a1b2c3d4-1e90-64bf-4b2a-020000000000}</Data>
+      <Data Name="LogonId">0x22a4b</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">Medium</Data>
+      <Data Name="Hashes">SHA256=2E1B6A4C8D0F3E5B7A9C1D2E3F4A5B6C7D8E9F0A1B2C3D4E5F60718293A4B5C6,MD5=E1F0D2C3B4A5968778695A4B3C2D1E0F</Data>
+      <Data Name="ParentProcessGuid">{a1b2c3d4-3a90-64bf-4800-000000005e00}</Data>
+      <Data Name="ParentProcessId">7712</Data>
+      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="ParentUser">CORP\jsmith</Data>
+    </EventData>
+  </Event>
+  <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+    <System>
+      <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+      <EventID>1</EventID>
+      <Version>5</Version>
+      <Level>4</Level>
+      <Task>1</Task>
+      <Opcode>0</Opcode>
+      <Keywords>0x8000000000000000</Keywords>
+      <TimeCreated SystemTime="2026-07-21T15:23:09.882455Z" />
+      <EventRecordID>190125</EventRecordID>
+      <Correlation />
+      <Execution ProcessID="3128" ThreadID="4820" />
+      <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+      <Computer>WORKSTATION-07.corp.example.com</Computer>
+      <Security UserID="S-1-5-18" />
+    </System>
+    <EventData>
+      <Data Name="RuleName">technique_id=T1003,technique_name=OS Credential Dumping</Data>
+      <Data Name="UtcTime">2026-07-21 15:23:09.879</Data>
+      <Data Name="ProcessGuid">{a1b2c3d4-3ae5-64bf-5a00-000000005e00}</Data>
+      <Data Name="ProcessId">8820</Data>
+      <Data Name="Image">C:\Windows\System32\rundll32.exe</Data>
+      <Data Name="FileVersion">10.0.19041.1 (WinBuild.160101.0800)</Data>
+      <Data Name="Description">Windows host process (Rundll32)</Data>
+      <Data Name="Product">Microsoft&#xAE; Windows&#xAE; Operating System</Data>
+      <Data Name="Company">Microsoft Corporation</Data>
+      <Data Name="OriginalFileName">RUNDLL32.EXE</Data>
+      <Data Name="CommandLine">rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump 624 C:\Users\jsmith\AppData\Local\Temp\lsass.dmp full</Data>
+      <Data Name="CurrentDirectory">C:\Windows\system32\</Data>
+      <Data Name="User">CORP\jsmith</Data>
+      <Data Name="LogonGuid">{a1b2c3d4-1e90-64bf-4b2a-020000000000}</Data>
+      <Data Name="LogonId">0x22a4b</Data>
+      <Data Name="TerminalSessionId">1</Data>
+      <Data Name="IntegrityLevel">High</Data>
+      <Data Name="Hashes">SHA256=3F2C7B5D9E1A4F6C8B0D2E3F4A5B6C7D8E9F0A1B2C3D4E5F60718293A4B5C6D7,MD5=D2C3B4A5968778695A4B3C2D1E0FF0E1</Data>
+      <Data Name="ParentProcessGuid">{a1b2c3d4-3a90-64bf-4800-000000005e00}</Data>
+      <Data Name="ParentProcessId">7712</Data>
+      <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+      <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+      <Data Name="ParentUser">CORP\jsmith</Data>
+    </EventData>
+  </Event>
+</Events>

