@@ -35,15 +35,27 @@ No installation or `pip install` needed.
 ```
 python parser.py <path-to-sysmon-xml> [-o/--output FILE]
                  [--image SUBSTR] [--user USER] [--integrity LEVEL]
+                 [--format json|jsonl|csv]
 ```
 
 | Argument | Description |
 |----------|-------------|
 | `xml` | Path to the Sysmon XML file (required). |
-| `-o`, `--output FILE` | Also write the JSON to `FILE`. It is still printed to stdout. |
+| `-o`, `--output FILE` | Also write the output to `FILE`. It is still printed to stdout. |
 | `--image SUBSTR` | Keep only events whose `Image` **contains** `SUBSTR` (case-insensitive). |
 | `--user USER` | Keep only events whose `User` matches `USER` **exactly** (case-insensitive). |
 | `--integrity LEVEL` | Keep only events with this `IntegrityLevel`. One of `High`, `Medium`, `Low`, `System` (case-insensitive). |
+| `--format FORMAT` | Output format: `json` (default), `jsonl`, or `csv`. |
+
+### Output formats
+
+- **`json`** (default) — pretty-printed. A single event is a bare object;
+  multiple events are an array.
+- **`jsonl`** — one compact JSON object per line. Ideal for streaming, piping,
+  and SIEM/log ingestion.
+- **`csv`** — a header row plus one row per event. Columns are the union of all
+  event keys (in first-seen order), so mixed event types line up; fields an
+  event lacks are left blank. Values are quoted/escaped per RFC 4180.
 
 ### Filtering
 
@@ -80,6 +92,13 @@ Filter to high-integrity PowerShell process events:
 python parser.py samples/mixed_events.xml --image powershell --integrity High
 ```
 
+Emit newline-delimited JSON (JSONL) for streaming, or CSV for a spreadsheet:
+
+```
+python parser.py samples/multi_events.xml --format jsonl
+python parser.py samples/multi_events.xml --format csv -o events.csv
+```
+
 ## Supported Event Types
 
 `EventID` and `Computer` are always taken from `<System>`; the remaining fields
@@ -105,7 +124,10 @@ and so on.
 
 ## Output Format
 
-Pretty-printed JSON (2-space indent):
+The output format is selected with `--format` (see [Output
+formats](#output-formats) above); the default is `json`.
+
+Default JSON is pretty-printed (2-space indent):
 
 - A **single** event produces one JSON **object**.
 - **Multiple** events produce a JSON **array** of objects.

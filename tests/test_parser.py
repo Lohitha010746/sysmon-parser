@@ -151,6 +151,70 @@ class FilterTests(unittest.TestCase):
         self.assertEqual(out.strip(), "[]")
 
 
+class FormatTests(unittest.TestCase):
+    def setUp(self):
+        self.events = parser.parse_file(sample("multi_events.xml"))
+
+    def test_json_multiple_is_array(self):
+        import json as _json
+        text = parser.format_events(self.events, "json")
+        parsed = _json.loads(text)
+        self.assertIsInstance(parsed, list)
+        self.assertEqual(len(parsed), 3)
+
+    def test_json_single_is_object(self):
+        import json as _json
+        text = parser.format_events(self.events[:1], "json")
+        parsed = _json.loads(text)
+        self.assertIsInstance(parsed, dict)
+        self.assertEqual(parsed["EventID"], "1")
+
+    def test_jsonl_one_object_per_line(self):
+        import json as _json
+        text = parser.format_events(self.events, "jsonl")
+        lines = text.splitlines()
+        self.assertEqual(len(lines), 3)
+        # Every line must be a standalone JSON object.
+        for line in lines:
+            self.assertIsInstance(_json.loads(line), dict)
+
+    def test_csv_header_and_rows_roundtrip(self):
+        import csv as _csv
+        import io as _io
+        text = parser.format_events(self.events, "csv")
+        rows = list(_csv.DictReader(_io.StringIO(text)))
+        self.assertEqual(len(rows), 3)
+        self.assertEqual(rows[0]["EventID"], "1")
+        self.assertEqual(rows[0]["CommandLine"], 'net group "Domain Admins" /domain')
+
+    def test_csv_columns_are_union_for_mixed_events(self):
+        import csv as _csv
+        import io as _io
+        mixed = parser.parse_file(sample("mixed_events.xml"))
+        text = parser.format_events(mixed, "csv")
+        header = next(_csv.reader(_io.StringIO(text)))
+        # Fields unique to the fallback (ID 10) event must appear as columns.
+        self.assertIn("TargetImage", header)
+        self.assertIn("GrantedAccess", header)
+
+    def test_unknown_format_raises(self):
+        with self.assertRaises(ValueError):
+            parser.format_events(self.events, "xml")
+
+    def test_main_jsonl_via_cli(self):
+        saved = sys.stdout
+        sys.stdout = io.StringIO()
+        try:
+            rc = parser.main(
+                ["parser.py", sample("multi_events.xml"), "--format", "jsonl"]
+            )
+            out = sys.stdout.getvalue()
+        finally:
+            sys.stdout = saved
+        self.assertEqual(rc, 0)
+        self.assertEqual(len([l for l in out.splitlines() if l]), 3)
+
+
 class ErrorHandlingTests(unittest.TestCase):
     def test_no_events_returns_empty_list(self):
         root = ET.fromstring("<root><foo>bar</foo></root>")

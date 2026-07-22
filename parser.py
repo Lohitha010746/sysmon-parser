@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
-"""Parse Windows Sysmon Event ID 1 (Process Creation) XML into JSON.
+"""Parse Windows Sysmon event XML into JSON, JSONL, or CSV.
 
 Usage:
-    python parser.py <path-to-sysmon-xml>
+    python parser.py <path-to-sysmon-xml> [--format json|jsonl|csv]
 
-Extracts the key fields defined in CLAUDE.md and writes them to stdout as
-JSON. A single event produces one JSON object; multiple events in one file
-produce a JSON array.
+Extracts the key fields defined in CLAUDE.md and writes them to stdout. The
+default JSON format produces one object for a single event or an array for
+multiple; JSONL produces one JSON object per line; CSV produces a header row
+plus one row per event.
 """
 import argparse
+import csv
+import io
 import json
 import sys
 import xml.etree.ElementTree as ET
@@ -202,6 +205,41 @@ def filter_events(events, image=None, user=None, integrity=None):
     return [event for event in events if matches(event)]
 
 
+def format_events(events, fmt):
+    """Serialize a list of event dicts to the requested output format.
+
+    - "json"  : pretty-printed; a single event is a bare object, multiple
+                events are an array (backwards-compatible default).
+    - "jsonl" : one compact JSON object per line (streaming/piping friendly).
+    - "csv"   : a header row plus one row per event. Columns are the union of
+                all event keys, in first-seen order; missing values are blank.
+    """
+    if fmt == "json":
+        output = events[0] if len(events) == 1 else events
+        return json.dumps(output, indent=2)
+
+    if fmt == "jsonl":
+        return "\n".join(json.dumps(event) for event in events)
+
+    if fmt == "csv":
+        fieldnames = []
+        seen = set()
+        for event in events:
+            for key in event:
+                if key not in seen:
+                    seen.add(key)
+                    fieldnames.append(key)
+        buffer = io.StringIO()
+        writer = csv.DictWriter(
+            buffer, fieldnames=fieldnames, lineterminator="\n"
+        )
+        writer.writeheader()
+        writer.writerows(events)
+        return buffer.getvalue().rstrip("\n")
+
+    raise ValueError(f"unknown format: {fmt}")
+
+
 def main(argv):
     parser = argparse.ArgumentParser(
         description="Parse Windows Sysmon event XML into JSON."
@@ -230,6 +268,12 @@ def main(argv):
         type=str.title,
         help="only events with this IntegrityLevel",
     )
+    parser.add_argument(
+        "--format",
+        choices=["json", "jsonl", "csv"],
+        default="json",
+        help="output format (default: json)",
+    )
     args = parser.parse_args(argv[1:])
 
     try:
@@ -254,12 +298,12 @@ def main(argv):
         )
         if not events:
             print("No events matched the given filters.", file=sys.stderr)
-            print("[]")
+            # json renders empty as "[]"; jsonl/csv have no rows to emit.
+            if args.format == "json":
+                print("[]")
             return 0
 
-    # One object for a single event; an array when there are multiple.
-    output = events[0] if len(events) == 1 else events
-    text = json.dumps(output, indent=2)
+    text = format_events(events, args.format)
 
     # Always display the result; optionally save it to a file as well.
     print(text)
@@ -270,7 +314,7 @@ def main(argv):
         except OSError as exc:
             print(f"Error writing {args.output}: {exc}", file=sys.stderr)
             return 1
-        print(f"Saved JSON to {args.output}", file=sys.stderr)
+        print(f"Saved output to {args.output}", file=sys.stderr)
     return 0
 
 
